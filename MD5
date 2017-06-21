@@ -1,0 +1,8 @@
+ee78f27fe1b26d8dc0dc07c0f92571bb *DESCRIPTION
+b27927878a073fcc9ce7aa214b60a1b1 *NAMESPACE
+c51c43898b90c9ec51fb0318dfa9d2a6 *R/rf_c50.R
+c9e0e6e72e8c83a919fefb1597aff6aa *man/predict.stratified_rf.Rd
+1d39e8fa8cb58d7072632217f1b5779f *man/print.stratified_rf.Rd
+255de6dbe3b5b1e37b9845b335ce8d13 *man/stratified_rf.Rd
+135fa1b9be9a651216790de6b321b8b1 *man/summary.stratified_rf.Rd
+f7a1eabd655116b5f3e336c22ff6dcfb *man/varimp_stratified_rf.Rd
