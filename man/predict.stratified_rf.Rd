@@ -5,7 +5,8 @@
 \title{Make predictions on new data}
 \usage{
 \method{predict}{stratified_rf}(object, data, type = "class",
-  agg_type = "prob", vote_type = "simple", ...)
+  agg_type = "prob", vote_type = "simple", na.action = na.pass,
+  threshold = NULL, ...)
 }
 \arguments{
 \item{object}{A stratified_rf model.}
@@ -14,9 +15,13 @@
 
 \item{type}{Prediction type. Either "class" to get the predicted class or "prob" to get the voting scores for each class.}
 
-\item{agg_type}{How to take the final prediction from those of each separate tree. Either "prob" to average the probabilities output from each tree or "class" to count the final predictions from each.}
+\item{agg_type}{How to combine the predictions from individual trees. Either "prob" to average the probabilities output from each tree or "class" to count the final predictions from each.}
 
 \item{vote_type}{How to weight the outputs from each tree. Either "simple" to average them, or "weighted" for a weighted average according to their OOB classification accuracy.}
+
+\item{na.action}{Function indicating how to handle missing values (see the 'C50' documentation for details).}
+
+\item{threshold}{Count only votes from trees whose out-of-bag classification accuracy is above this threshold. Must be a number between 0 and 1.}
 
 \item{...}{other options (not currently used)}
 }
@@ -24,13 +29,16 @@
 Make predictions from a stratified_rf model on new data.
 }
 \details{
-Note that by default the predictions are made quite differently from the original Random Forest algorithm.
+Note that by default, for classification models the predictions are made quite differently from the original Random Forest algorithm.
 }
 \examples{
 data(iris)
 groups <- list(c("Sepal.Length","Sepal.Width"),c("Petal.Length","Petal.Width"))
 mtry <- c(1,1)
-m <- stratified_rf(iris,"Species",groups,mtry,ntrees=2)
+m <- stratified_rf(iris,"Species",groups,mtry,ntrees=2,multicore=FALSE)
 predict(m,iris)
+}
+\seealso{
+'C50' library: \url{https://cran.r-project.org/package=C50}
 }
 \keyword{predict.stratified_rf}

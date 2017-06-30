@@ -12,12 +12,15 @@
 \item{...}{other options (not currently used)}
 }
 \description{
-Summary statistics from a model
+Calculates error statistics for out-of-bag samples from a stratified_rf model.
+}
+\details{
+Predictions for a class are made by averaging class probabilities across trees rather than by a majority vote. All trees are weighted equally.
 }
 \examples{
 data(iris)
 groups <- list(c("Sepal.Length","Sepal.Width"),c("Petal.Length","Petal.Width"))
 mtry <- c(1,1)
-m <- stratified_rf(iris,"Species",groups,mtry,ntrees=2)
+m <- stratified_rf(iris,"Species",groups,mtry,ntrees=2,multicore=FALSE)
 summary(m)
 }
